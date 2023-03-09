@@ -3,59 +3,46 @@ package com.company.bookstore.controller;
 import com.company.bookstore.models.Publisher;
 import com.company.bookstore.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
-import java.util.List;
 
-@Controller
+@RestController
 public class PublisherController {
 
     @Autowired
-    PublisherRepository publisherRepository;
+    PublisherRepository repo;
 
-    @QueryMapping
-    public List<Publisher> publishers() {
-        return publisherRepository.getPublishers();
+    //    A POST route that creates a new publisher. 10 pts
+    @PostMapping("/publisher")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Publisher addPublisher(@RequestBody Publisher publisher) {
+        return repo.save(publisher);
     }
 
-    @QueryMapping
-    public Publisher findPublisherById(@Argument int id) {
-        return publisherRepository.getPublisherById(id);
+    //    A PUT route that updates an existing publisher. 10 pts
+    @PutMapping("/publisher")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePublisher(@RequestBody Publisher publisher) {
+        repo.save(publisher);
     }
 
-    @MutationMapping
-    public void addPublisher(
-            @Argument int publisher_id,
-            @Argument String name,
-            @Argument String street,
-            @Argument String city,
-            @Argument String state,
-            @Argument String postal_code,
-            @Argument String phone,
-            @Argument String email) {
-        Publisher publisher = new Publisher(publisher_id, name, street, city, state, postal_code, phone, email);
-        publisherRepository.addPublisher(publisher);
+    //    A DELETE route that deletes an existing publisher. 10 pts
+    @DeleteMapping("/publisher/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePublisher(@PathVariable int id) {
+        repo.deleteById(id);
     }
 
-    @MutationMapping
-    public void updatePublisher(
-            @Argument int publisher_id,
-            @Argument String name,
-            @Argument String street,
-            @Argument String city,
-            @Argument String state,
-            @Argument String postal_code,
-            @Argument String phone,
-            @Argument String email) {
-        Publisher updatedPublisher = new Publisher(publisher_id, name, street, city, state, postal_code, phone, email);
-        publisherRepository.updatePublisher(updatedPublisher);
-    }
-
-    @MutationMapping
-    public void deletePublisherById(@Argument int id) {
-        publisherRepository.deletePublisher(id);
+    //    A GET route that returns a specific publisher by id. 10 pts
+    @GetMapping("/publisher/{id}")
+    public Publisher getPublisherById(@PathVariable int id) {
+        Optional<Publisher> returnVal = repo.findById(id);
+        if (returnVal.isPresent()) {
+            return returnVal.get();
+        } else {
+            return null;
+        }
     }
 }

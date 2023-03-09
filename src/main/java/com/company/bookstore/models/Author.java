@@ -1,9 +1,20 @@
 package com.company.bookstore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-public class Author {
-
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="author")
+public class Author implements Serializable {
+    @Id
+    @Column(name = "author_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int author_id;
     private String first_name;
     private String last_name;
@@ -13,6 +24,11 @@ public class Author {
     private String postal_code;
     private String phone;
     private String email;
+
+    // one join column, set of books
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "books_written")
+    private Set<Author> books = new HashSet<Author>();
 
     public Author() {
     }

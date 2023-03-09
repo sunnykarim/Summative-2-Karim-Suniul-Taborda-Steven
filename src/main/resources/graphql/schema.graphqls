@@ -1,5 +1,5 @@
 type Author {
-    author_id: Int!
+    author_id: ID
     first_name: String!
     last_name: String!
     street: String
@@ -11,17 +11,17 @@ type Author {
 }
 
 type Book {
-    book_id: ID!
+    book_id: ID
     isbn: String!
     publish_date: String!
     author_id: ID!
     title: String!
     publisher_id: ID!
-    price: Int!
+    price: Float
 }
 
 type Publisher {
-    publisher_id: Int!
+    publisher_id: ID
     name: String!
     street: String
     city: String
@@ -36,79 +36,8 @@ type Query {
     findAuthorById(id: Int!): Author
 
     books: [Book!]!
-    findBookById(id: ID!): Book!
-    findBooksByAuthorId(authorId: ID!): [Book!]!
-    findBooksByPublisherId(publisherId: ID!): [Book!]!
+    findBookById(id: ID): Book!
 
     publishers: [Publisher!]!
     findPublisherById(id: Int!): Publisher
 }
-
-type Mutation {
-    addAuthor(
-        author_id: Int!,
-        first_name: String!,
-        last_name: String!,
-        street: String,
-        city: String,
-        state: String,
-        postal_code: String,
-        phone: String,
-        email: String
-    ): Author!
-    updateAuthor(
-        author_id: Int!,
-        first_name: String!,
-        last_name: String!,
-        street: String,
-        city: String,
-        state: String,
-        postal_code: String,
-        phone: String,
-        email: String
-    ): Author!
-    deleteAuthorById(id: Int!): Boolean!
-
-    addBook(
-        book_id: ID!,
-        isbn: String!,
-        publish_date: String!,
-        author_id: ID!,
-        title: String!,
-        publisher_id: ID!,
-        price: Int!
-    ): Book!
-    updateBook(
-        book_id: ID!,
-        isbn: String!,
-        publish_date: String!,
-        author_id: ID!,
-        title: String!,
-        publisher_id: ID!,
-        price: Int!
-    ): Book!
-    deleteBookById(id: ID!): Boolean!
-
-    addPublisher(
-        publisher_id: Int!,
-        name: String!,
-        street: String,
-        city: String,
-        state: String,
-        postal_code: String,
-        phone: String,
-        email: String,
-    ): Publisher!
-    updatePublisher(
-        publisher_id: Int!,
-        name: String!,
-        street: String,
-        city: String,
-        state: String,
-        postal_code: String,
-        phone: String,
-        email: String,
-    ): Publisher!
-    deletePublisherById(id: Int!): Boolean!
-}
-

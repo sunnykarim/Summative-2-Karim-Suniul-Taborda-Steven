@@ -1,9 +1,19 @@
 package com.company.bookstore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="publisher")
 public class Publisher {
-
+    @Id
+    @Column(name = "publisher_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int publisher_id;
     private String name;
     private String street;
@@ -12,6 +22,11 @@ public class Publisher {
     private String postal_code;
     private String phone;
     private String email;
+
+    // publisher join on set of books
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "books_published")
+    private Set<Publisher> books = new HashSet<Publisher>( );
 
     public Publisher() {
     }

@@ -1,9 +1,17 @@
 package com.company.bookstore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="book")
 public class Book {
-
+    @Id
+    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int book_id;
     private String isbn;
     private String publish_date;
@@ -11,6 +19,8 @@ public class Book {
     private String title;
     private int publisher_id;
     private int price;
+
+    // no join column
 
     public Book() {
     }

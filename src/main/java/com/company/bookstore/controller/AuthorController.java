@@ -3,61 +3,47 @@ package com.company.bookstore.controller;
 import com.company.bookstore.models.Author;
 import com.company.bookstore.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-@Controller
+@RestController
 public class AuthorController {
-
     @Autowired
-    AuthorRepository authorRepository;
+    AuthorRepository repo;
 
-    @QueryMapping
-    public List<Author> authors() {
-        return authorRepository.getAuthors();
+    //    A POST route that creates a new author
+    @PostMapping("/authors")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Author addAuthor(@RequestBody Author author) {
+        return repo.save(author);
     }
 
-    @QueryMapping
-    public Author findAuthorById(@Argument int id) {
-        return authorRepository.getAuthorById(id);
+    //    A PUT route that updates an existing author
+    @PutMapping("/authors")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateAuthor(@RequestBody Author author) {
+        repo.save(author);
     }
 
-    @MutationMapping
-    public void addAuthor(
-            @Argument int author_id,
-            @Argument String first_name,
-            @Argument String last_name,
-            @Argument String street,
-            @Argument String city,
-            @Argument String state,
-            @Argument String postal_code,
-            @Argument String phone,
-            @Argument String email) {
-        Author author = new Author(author_id, first_name, last_name, street, city, state, postal_code, phone, email);
-        authorRepository.addAuthor(author);
+    //    A DELETE route that deletes an existing author
+    @DeleteMapping("/authors/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAuthor(@PathVariable int id) {
+        repo.deleteById(id);
     }
 
-    @MutationMapping
-    public void updateAuthor(
-            @Argument int author_id,
-            @Argument String first_name,
-            @Argument String last_name,
-            @Argument String street,
-            @Argument String city,
-            @Argument String state,
-            @Argument String postal_code,
-            @Argument String phone,
-            @Argument String email) {
-        Author updatedAuthor = new Author(author_id, first_name, last_name, street, city, state, postal_code, phone, email);
-        authorRepository.updateAuthor(updatedAuthor);
+    //    A GET route that returns a specific author by id
+    @GetMapping("/authors/{id}")
+    public Author getAuthorById(@PathVariable int id) {
+        Optional<Author> returnVal = repo.findById(id);
+        if (returnVal.isPresent()) {
+            return returnVal.get();
+        } else {
+            return null;
+        }
     }
 
-    @MutationMapping
-    public void deleteAuthorById(@Argument int id) {
-        authorRepository.deleteAuthor(id);
-    }
 }
