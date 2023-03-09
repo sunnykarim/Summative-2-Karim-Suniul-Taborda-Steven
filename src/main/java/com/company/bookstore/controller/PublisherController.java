@@ -15,28 +15,28 @@ public class PublisherController {
     PublisherRepository repo;
 
     //    A POST route that creates a new publisher. 10 pts
-    @PostMapping("/publisher")
+    @PostMapping("/publishers")
     @ResponseStatus(HttpStatus.CREATED)
     public Publisher addPublisher(@RequestBody Publisher publisher) {
         return repo.save(publisher);
     }
 
     //    A PUT route that updates an existing publisher. 10 pts
-    @PutMapping("/publisher")
+    @PutMapping("/publishers")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updatePublisher(@RequestBody Publisher publisher) {
         repo.save(publisher);
     }
 
     //    A DELETE route that deletes an existing publisher. 10 pts
-    @DeleteMapping("/publisher/{id}")
+    @DeleteMapping("/publishers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePublisher(@PathVariable int id) {
         repo.deleteById(id);
     }
 
     //    A GET route that returns a specific publisher by id. 10 pts
-    @GetMapping("/publisher/{id}")
+    @GetMapping("/publishers/{id}")
     public Publisher getPublisherById(@PathVariable int id) {
         Optional<Publisher> returnVal = repo.findById(id);
         if (returnVal.isPresent()) {

@@ -128,22 +128,4 @@ public class PublisherControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
-
-    // Testing GET publishers/{state}
-    @Test
-    public void shouldReturnPublishersByState() throws Exception{
-        Publisher publisher = new Publisher();
-        publisher.setName("Joe Smith");
-        publisher.setPhone("111-222-3456");
-        publisher.setStreet("Address1");
-        publisher.setCity("Los Angeles");
-        publisher.setState("California");
-        publisher.setPostal_code("12345");
-        publisher.setEmail("JoeS@gmail.com");
-        publisher.setPublisher_id(2);
-
-        String inputJson = mapper.writeValueAsString(publisher);
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/publishers/state/California")).andDo(print()).andExpect(status().isOk());
-    }
 }

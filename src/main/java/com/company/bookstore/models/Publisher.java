@@ -25,8 +25,8 @@ public class Publisher {
 
     // publisher join on set of books
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "books_published")
-    private Set<Publisher> books = new HashSet<Publisher>( );
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<Book>( );
 
     public Publisher() {
     }

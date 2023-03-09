@@ -32,12 +32,9 @@ type Publisher {
 }
 
 type Query {
-    authors: [Author!]!
-    findAuthorById(id: Int!): Author
+    findAuthorById(id: Int): Author
 
-    books: [Book!]!
-    findBookById(id: ID): Book!
+    findBookById(id: Int): Book
 
-    publishers: [Publisher!]!
-    findPublisherById(id: Int!): Publisher
+    findPublisherById(id: Int): Publisher
 }

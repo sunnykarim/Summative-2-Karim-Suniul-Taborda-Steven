@@ -18,28 +18,28 @@ public class BookController {
     BookRepository repo;
 
     //    A POST route that creates a new book. 10 pts
-    @PostMapping("/book")
+    @PostMapping("/books")
     @ResponseStatus(HttpStatus.CREATED)
     public Book addBook(@RequestBody Book book) {
         return repo.save(book);
     }
 
     //    A PUT route that updates an existing book. 10 pts
-    @PutMapping("/book")
+    @PutMapping("/books")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBook(@RequestBody Book book) {
         repo.save(book);
     }
 
     //    A DELETE route that deletes an existing book. 10 pts
-    @DeleteMapping("/book/{id}")
+    @DeleteMapping("/books/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable int id) {
         repo.deleteById(id);
     }
 
     //    A GET route that returns a specific book by id. 10 pts
-    @GetMapping("/book/{id}")
+    @GetMapping("/books/{id}")
     public Book getBookById(@PathVariable int id) {
         Optional<Book> returnVal = repo.findById(id);
         if (returnVal.isPresent()) {
