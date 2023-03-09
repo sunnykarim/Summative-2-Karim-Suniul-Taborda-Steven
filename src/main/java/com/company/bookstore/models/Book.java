@@ -18,7 +18,7 @@ public class Book {
     private int author_id;
     private String title;
     private int publisher_id;
-    private int price;
+    private float price;
 
     // no join column
 
@@ -83,11 +83,11 @@ public class Book {
         this.publisher_id = publisher_id;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
