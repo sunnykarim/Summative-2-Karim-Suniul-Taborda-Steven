@@ -15,8 +15,10 @@ public class Book {
     private int book_id;
     private String isbn;
     private String publish_date;
+    @Column(name = "author_id")
     private int author_id;
     private String title;
+    @Column(name = "publisher_id")
     private int publisher_id;
     private float price;
 
