@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,8 +44,8 @@ public class BookRepositoryTest {
     public void addBook() {
         //Arrange...
         Book book = new Book();
-        book.setIsbn("999-1-11-123456-0");
-        book.setPublish_date("01/01/1970");
+        book.setIsbn("9991111234560");
+        book.setPublish_date(LocalDate.parse("1970-01-01"));
         book.setTitle("BookTestName1");
         book.setPrice((float) 16.97);
 
@@ -55,8 +56,10 @@ public class BookRepositoryTest {
         author.setCity("Toronto");
         author.setState("OH");
         author.setPostal_code("43964");
-        author.setPhone("740-123-4567");
+        author.setPhone("7401234567");
         author.setEmail("JohnDoe@gmail.com");
+
+        author = authorRepo.save(author);
 
         Publisher publisher = new Publisher();
         publisher.setName("John Doe");
@@ -64,15 +67,17 @@ public class BookRepositoryTest {
         publisher.setCity("Toronto");
         publisher.setState("OH");
         publisher.setPostal_code("43964");
-        publisher.setPhone("740-123-4567");
+        publisher.setPhone("7401234567");
         publisher.setEmail("JohnDoe@gmail.com");
+
+        publisher = publisherRepo.save(publisher);
 
         book.setAuthor_id(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
         //Act...
-        author = authorRepo.save(author);
-        publisher = publisherRepo.save(publisher);
+//        author = authorRepo.save(author);
+//        publisher = publisherRepo.save(publisher);
         book = bookRepo.save(book);
 
         //Assert...
@@ -87,11 +92,9 @@ public class BookRepositoryTest {
 
         //Act...
         Book book = new Book();
-        book.setIsbn("111-1-11-123456-0");
-        book.setPublish_date("01/02/1970");
-        book.setAuthor_id(1);
+        book.setIsbn("1111111234560");
+        book.setPublish_date(LocalDate.parse("1970-01-02"));
         book.setTitle("BookTestName1");
-        book.setPublisher_id(1);
         book.setPrice((float) 16.97);
 
         Author author = new Author();
@@ -101,8 +104,9 @@ public class BookRepositoryTest {
         author.setCity("Toronto");
         author.setState("OH");
         author.setPostal_code("43964");
-        author.setPhone("740-123-4567");
+        author.setPhone("7401234567");
         author.setEmail("JohnDoe@gmail.com");
+        author = authorRepo.save(author);
 
         Publisher publisher = new Publisher();
         publisher.setName("John Doe");
@@ -110,47 +114,48 @@ public class BookRepositoryTest {
         publisher.setCity("Toronto");
         publisher.setState("OH");
         publisher.setPostal_code("43964");
-        publisher.setPhone("740-123-4567");
+        publisher.setPhone("7401234567");
         publisher.setEmail("JohnDoe@gmail.com");
+        publisher = publisherRepo.save(publisher);
 
         book.setAuthor_id(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
-        author = authorRepo.save(author);
-        publisher = publisherRepo.save(publisher);
-        bookRepo.save(book);
+        book = bookRepo.save(book);
 
         Book book2 = new Book();
-        book.setIsbn("999-1-11-123456-0");
-        book.setPublish_date("01/03/1970");
-        book.setTitle("BookTestName2");
-        book.setPrice((float) 19.99);
+        book2.setIsbn("9991111234560");
+        book2.setPublish_date(LocalDate.parse("1970-01-03"));
+        book2.setTitle("BookTestName2");
+        book2.setPrice((float) 19.99);
 
         Author author2 = new Author();
-        author.setFirst_name("AAAAA");
-        author.setLast_name("BBBB");
-        author.setStreet("42 Wallaby Way, Sydney.");
-        author.setCity("Toronto");
-        author.setState("OH");
-        author.setPostal_code("43964");
-        author.setPhone("740-123-4567");
-        author.setEmail("JohnDoe@gmail.com");
+        author2.setFirst_name("AAAAA");
+        author2.setLast_name("BBBB");
+        author2.setStreet("42 Wallaby Way, Sydney.");
+        author2.setCity("Toronto");
+        author2.setState("OH");
+        author2.setPostal_code("43964");
+        author2.setPhone("7401234567");
+        author2.setEmail("JohnDoe@gmail.com");
+        author2 = authorRepo.save(author2);
 
         Publisher publisher2 = new Publisher();
-        publisher.setName("AAA BBBB");
-        publisher.setStreet("42 Wallaby Way, Sydney.");
-        publisher.setCity("Toronto");
-        publisher.setState("OH");
-        publisher.setPostal_code("43964");
-        publisher.setPhone("740-123-4567");
-        publisher.setEmail("JohnDoe@gmail.com");
+        publisher2.setName("AAA BBBB");
+        publisher2.setStreet("42 Wallaby Way, Sydney.");
+        publisher2.setCity("Toronto");
+        publisher2.setState("OH");
+        publisher2.setPostal_code("43964");
+        publisher2.setPhone("7401234567");
+        publisher2.setEmail("JohnDoe@gmail.com");
+        publisher2 = publisherRepo.save(publisher2);
 
-        book.setAuthor_id(author.getAuthor_id());
-        book.setPublisher_id(publisher.getPublisher_id());
+        book2.setAuthor_id(author2.getAuthor_id());
+        book2.setPublisher_id(publisher2.getPublisher_id());
 
-        author2 = authorRepo.save(author);
-        publisher2 = publisherRepo.save(publisher);
-        bookRepo.save(book2);
+        book2 = bookRepo.save(book2);
+
+        //bookRepo.save(book2);
 
         List<Book> bookList = bookRepo.findAll();
 
@@ -162,8 +167,8 @@ public class BookRepositoryTest {
     public void updateBook() {
         //Arrange...
         Book book = new Book();
-        book.setIsbn("999-1-11-123456-0");
-        book.setPublish_date("01/01/1970");
+        book.setIsbn("9991111234560");
+        book.setPublish_date(LocalDate.parse("1970-01-01"));
         book.setTitle("BookTestName1");
         book.setPrice((float) 14.97);
 
@@ -174,8 +179,9 @@ public class BookRepositoryTest {
         author.setCity("Toronto");
         author.setState("OH");
         author.setPostal_code("43964");
-        author.setPhone("740-123-4567");
+        author.setPhone("7401234567");
         author.setEmail("JohnDoe@gmail.com");
+        author = authorRepo.save(author);
 
         Publisher publisher = new Publisher();
         publisher.setName("John Doe");
@@ -183,14 +189,13 @@ public class BookRepositoryTest {
         publisher.setCity("Toronto");
         publisher.setState("OH");
         publisher.setPostal_code("43964");
-        publisher.setPhone("740-123-4567");
+        publisher.setPhone("7401234567");
         publisher.setEmail("JohnDoe@gmail.com");
+        publisher = publisherRepo.save(publisher);
 
         book.setAuthor_id(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
-        author = authorRepo.save(author);
-        publisher = publisherRepo.save(publisher);
         bookRepo.save(book);
 
         //Act...
@@ -208,8 +213,8 @@ public class BookRepositoryTest {
     public void deleteBook() {
         //Arrange...
         Book book = new Book();
-        book.setIsbn("000-1-11-123456-0");
-        book.setPublish_date("01/05/1970");
+        book.setIsbn("0001111234560");
+        book.setPublish_date(LocalDate.parse("1970-01-05"));
         book.setTitle("BookTestName3");
         book.setPrice((float) 16.97);
 
@@ -220,8 +225,9 @@ public class BookRepositoryTest {
         author.setCity("Toronto");
         author.setState("OH");
         author.setPostal_code("43964");
-        author.setPhone("740-123-4567");
+        author.setPhone("7401234567");
         author.setEmail("JohnDoe@gmail.com");
+        author = authorRepo.save(author);
 
         Publisher publisher = new Publisher();
         publisher.setName("John Doe");
@@ -229,14 +235,13 @@ public class BookRepositoryTest {
         publisher.setCity("Toronto");
         publisher.setState("OH");
         publisher.setPostal_code("43964");
-        publisher.setPhone("740-123-4567");
+        publisher.setPhone("7401234567");
         publisher.setEmail("JohnDoe@gmail.com");
+        publisher = publisherRepo.save(publisher);
 
         book.setAuthor_id(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
-        author = authorRepo.save(author);
-        publisher = publisherRepo.save(publisher);
         bookRepo.save(book);
 
         //Act...
@@ -250,8 +255,8 @@ public class BookRepositoryTest {
     @org.junit.Test
     public void findBookById() {
         Book book = new Book();
-        book.setIsbn("555-1-12-123456-0");
-        book.setPublish_date("01/01/1970");
+        book.setIsbn("5551121234560");
+        book.setPublish_date(LocalDate.parse("1970-01-01"));
         book.setTitle("BookTestName1");
 
 
@@ -262,8 +267,9 @@ public class BookRepositoryTest {
         author.setCity("Toronto");
         author.setState("OH");
         author.setPostal_code("43964");
-        author.setPhone("740-123-4567");
+        author.setPhone("7401234567");
         author.setEmail("JohnDoe@gmail.com");
+        author = authorRepo.save(author);
 
         Publisher publisher = new Publisher();
         publisher.setName("John Doe");
@@ -271,14 +277,13 @@ public class BookRepositoryTest {
         publisher.setCity("Toronto");
         publisher.setState("OH");
         publisher.setPostal_code("43964");
-        publisher.setPhone("740-123-4567");
+        publisher.setPhone("7401234567");
         publisher.setEmail("JohnDoe@gmail.com");
+        publisher = publisherRepo.save(publisher);
 
         book.setAuthor_id(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
-        author = authorRepo.save(author);
-        publisher = publisherRepo.save(publisher);
         bookRepo.save(book);
 
         //Assert...

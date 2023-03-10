@@ -2,6 +2,7 @@ package com.company.bookstore.controller;
 
 
 import com.company.bookstore.models.Book;
+import com.company.bookstore.models.Publisher;
 import com.company.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,12 @@ public class BookController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable int id) {
         repo.deleteById(id);
+    }
+
+    @GetMapping("/books")
+    public List<Book> getAllBooks(){
+        List<Book> books = (List<Book>) repo.findAll();
+        return books;
     }
 
     //    A GET route that returns a specific book by id. 10 pts

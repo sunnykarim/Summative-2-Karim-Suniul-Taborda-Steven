@@ -1,5 +1,6 @@
 package com.company.bookstore.controller;
 
+import com.company.bookstore.models.Author;
 import com.company.bookstore.models.Book;
 import com.company.bookstore.repository.BookRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -52,7 +54,7 @@ public class BookControllerTest {
         Book book = new Book();
         book.setBook_id(1);
         book.setIsbn("999-1-11-123456-0");
-        book.setPublish_date("01/01/1970");
+        book.setPublish_date(LocalDate.parse("1970-01-01"));
         book.setAuthor_id(1);
         book.setTitle("BookTestName1");
         book.setPublisher_id(1);
@@ -78,7 +80,7 @@ public class BookControllerTest {
         Book book = new Book();
         book.setBook_id(2);
         book.setIsbn("000-1-11-123456-0");
-        book.setPublish_date("01/02/1970");
+        book.setPublish_date(LocalDate.parse("1970-02-01"));
         book.setAuthor_id(2);
         book.setTitle("BookTestName2");
         book.setPublisher_id(3);
@@ -97,7 +99,7 @@ public class BookControllerTest {
         Book book = new Book();
         book.setBook_id(3);
         book.setIsbn("123-1-11-123456-0");
-        book.setPublish_date("01/03/1970");
+        book.setPublish_date(LocalDate.parse("1970-02-01"));
         book.setAuthor_id(3);
         book.setTitle("BookTestName3");
         book.setPublisher_id(3);
@@ -112,6 +114,43 @@ public class BookControllerTest {
                 )
                 .andDo(print())
                 .andExpect(status().isNoContent());
+
+    }
+
+    @Test
+    public void shouldReturnAllBooks() throws Exception {
+        // Create 3 authors
+        Book book = new Book();
+        book.setIsbn("000-1-11-123456-0");
+        book.setPublish_date(LocalDate.parse("1970-02-01"));
+        book.setAuthor_id(1);
+        book.setTitle("BookTestName2");
+        book.setPublisher_id(1);
+        book.setPrice((float) 19.99);
+
+        Book book2 = new Book();
+        book2.setIsbn("123-1-44-124456-0");
+        book2.setPublish_date(LocalDate.parse("1970-03-01"));
+        book2.setAuthor_id(2);
+        book2.setTitle("BookTestName3");
+        book2.setPublisher_id(2);
+        book2.setPrice((float) 20.00);
+
+        Book book3 = new Book();
+        book3.setIsbn("123-1-44-124434-0");
+        book3.setPublish_date(LocalDate.parse("1970-05-01"));
+        book3.setAuthor_id(3);
+        book3.setTitle("BookTestName3");
+        book3.setPublisher_id(3);
+        book3.setPrice((float) 20.00);
+
+        repo.save(book);
+        repo.save(book2);
+        repo.save(book3);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/books"))
+                .andDo(print())
+                .andExpect(status().isOk());
 
     }
 

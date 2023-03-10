@@ -37,12 +37,24 @@ public class GraphController {
     }
 
     @QueryMapping
-    public Publisher findPublisherById(@Argument int id) {
-        return publisherRepo.findById(id).get();
+    public Publisher findPublisherById(@Argument int publisher_id) {
+        Optional<Publisher> publisher = publisherRepo.findById(publisher_id);
+        if (publisher.isPresent()){
+            return publisher.get();
+        }
+        else {
+            return null;
+        }
     }
 
     @QueryMapping
-    public Author findAuthorById(@Argument int id) {
-        return authorRepo.findById(id).get();
+    public Author findAuthorById(@Argument int author_id) {
+        Optional<Author> author = authorRepo.findById(author_id);
+        if (author.isPresent()){
+            return author.get();
+        }
+        else {
+            return null;
+        }
     }
 }

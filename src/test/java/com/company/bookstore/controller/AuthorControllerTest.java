@@ -121,6 +121,51 @@ public class AuthorControllerTest {
 
     }
 
+    @Test
+    public void shouldReturnAllAuthors() throws Exception {
+        // Create 3 authors
+        Author author = new Author();
+        author.setFirst_name("John");
+        author.setLast_name("Doe");
+        author.setStreet("42 Wallaby Way, Sydney.");
+        author.setCity("Toronto");
+        author.setState("Ohio");
+        author.setPostal_code("43964");
+        author.setPhone("740-123-4567");
+        author.setEmail("JohnDoe@gmail.com");
+
+        Author author2 = new Author();
+        author2.setFirst_name("Jane");
+        author2.setLast_name("Doe");
+        author2.setStreet("1234 Random Address");
+        author2.setCity("Sunnyvale");
+        author2.setState("California");
+        author2.setPostal_code("94043");
+        author2.setPhone("408-123-4567");
+        author2.setEmail("JaneDoe@gmail.com");
+
+        Author author3 = new Author();
+        author3.setFirst_name("David");
+        author3.setLast_name("Smith");
+        author3.setStreet("0000 Random Address2");
+        author3.setCity("Mountain View");
+        author3.setState("California");
+        author3.setPostal_code("94039");
+        author3.setPhone("650-123-4567");
+        author3.setEmail("JaneDoe@gmail.com");
+
+        repo.save(author);
+        repo.save(author2);
+        repo.save(author3);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/authors"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+    }
+
+
+
     // Testing DELETE /authors/{id}
     @Test
     public void shouldDeleteByIdAndReturn204StatusCode() throws Exception {

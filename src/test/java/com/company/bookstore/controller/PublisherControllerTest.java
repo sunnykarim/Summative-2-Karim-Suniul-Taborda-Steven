@@ -1,5 +1,6 @@
 package com.company.bookstore.controller;
 
+import com.company.bookstore.models.Author;
 import com.company.bookstore.models.Publisher;
 import com.company.bookstore.repository.PublisherRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -115,6 +116,46 @@ public class PublisherControllerTest {
                 )
                 .andDo(print())
                 .andExpect(status().isNoContent());
+
+    }
+
+    @Test
+    public void shouldReturnAllPublishers() throws Exception {
+        // Create 3 authors
+        Publisher publisher = new Publisher();
+        publisher.setName("Penguin House");
+        publisher.setStreet("42 Wallaby Way, Sydney.");
+        publisher.setCity("Toronto");
+        publisher.setState("Ohio");
+        publisher.setPostal_code("43964");
+        publisher.setPhone("740-123-4567");
+        publisher.setEmail("JohnDoe@gmail.com");
+
+        Publisher publisher2 = new Publisher();
+        publisher2.setName("Random House");
+        publisher2.setStreet("1234 Random Address");
+        publisher2.setCity("Sunnyvale");
+        publisher2.setState("California");
+        publisher2.setPostal_code("94043");
+        publisher2.setPhone("408-123-4567");
+        publisher2.setEmail("JaneDoe@gmail.com");
+
+        Publisher publisher3 = new Publisher();
+        publisher3.setName("Books and Books");
+        publisher3.setStreet("0000 Random Address2");
+        publisher3.setCity("Mountain View");
+        publisher3.setState("California");
+        publisher3.setPostal_code("94039");
+        publisher3.setPhone("650-123-4567");
+        publisher3.setEmail("JaneDoe@gmail.com");
+
+        repo.save(publisher);
+        repo.save(publisher2);
+        repo.save(publisher3);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/publishers"))
+                .andDo(print())
+                .andExpect(status().isOk());
 
     }
 

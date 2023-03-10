@@ -21,6 +21,12 @@ public class AuthorController {
         return repo.save(author);
     }
 
+    @GetMapping("/authors")
+    public List<Author> getAllAuthors(){
+        List<Author> authors = (List<Author>) repo.findAll();
+        return authors;
+    }
+
     //    A PUT route that updates an existing author
     @PutMapping("/authors")
     @ResponseStatus(HttpStatus.NO_CONTENT)

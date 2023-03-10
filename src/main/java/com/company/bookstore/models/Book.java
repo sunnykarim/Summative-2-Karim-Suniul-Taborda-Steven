@@ -3,6 +3,7 @@ package com.company.bookstore.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +15,8 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int book_id;
     private String isbn;
-    private String publish_date;
+
+    private LocalDate publish_date;
     @Column(name = "author_id")
     private int author_id;
     private String title;
@@ -27,7 +29,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(int book_id, String isbn, String publish_date, int author_id, String title, int publisher_id, int price) {
+    public Book(int book_id, String isbn, LocalDate publish_date, int author_id, String title, int publisher_id, float price) {
         this.book_id = book_id;
         this.isbn = isbn;
         this.publish_date = publish_date;
@@ -51,14 +53,6 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }
-
-    public String getPublish_date() {
-        return publish_date;
-    }
-
-    public void setPublish_date(String publish_date) {
-        this.publish_date = publish_date;
     }
 
     public int getAuthor_id() {
@@ -91,6 +85,14 @@ public class Book {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public LocalDate getPublish_date() {
+        return publish_date;
+    }
+
+    public void setPublish_date(LocalDate publish_date) {
+        this.publish_date = publish_date;
     }
 
     @Override
