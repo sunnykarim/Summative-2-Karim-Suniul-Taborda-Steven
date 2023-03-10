@@ -57,7 +57,7 @@ public class PublisherControllerTest {
         publisher.setState("California");
         publisher.setPostal_code("12345");
         publisher.setEmail("JoeS@gmail.com");
-        publisher.setPublisher_id(2);
+        //publisher.setPublisher_id(2);
 
         // Convert Java Object to JSON
         String inputJson = mapper.writeValueAsString(publisher);
@@ -84,7 +84,7 @@ public class PublisherControllerTest {
         publisher.setState("California");
         publisher.setPostal_code("12345");
         publisher.setEmail("JoeS@gmail.com");
-        publisher.setPublisher_id(2);
+        //publisher.setPublisher_id(2);
 
         String inputJson = mapper.writeValueAsString(publisher);
 

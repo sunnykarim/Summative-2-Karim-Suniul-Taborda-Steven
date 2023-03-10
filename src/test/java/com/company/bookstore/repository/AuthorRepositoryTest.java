@@ -31,7 +31,7 @@ public class AuthorRepositoryTest {
     public void addAuthor() {
         //Arrange...
         Author author = new Author();
-        author.setAuthor_id(1);
+        //author.setAuthor_id(1);
         author.setFirst_name("John");
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
@@ -56,7 +56,7 @@ public class AuthorRepositoryTest {
 
         //Act...
         Author author = new Author();
-        author.setAuthor_id(1);
+        //author.setAuthor_id(1);
         author.setFirst_name("John");
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
@@ -91,7 +91,7 @@ public class AuthorRepositoryTest {
     public void updateAuthor() {
         //Arrange...
         Author author = new Author();
-        author.setAuthor_id(1);
+        //author.setAuthor_id(1);
         author.setFirst_name("John");
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
@@ -118,7 +118,7 @@ public class AuthorRepositoryTest {
     public void deleteAuthor() {
         //Arrange...
         Author author = new Author();
-        author.setAuthor_id(1);
+        //author.setAuthor_id(1);
         author.setFirst_name("John");
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
@@ -141,7 +141,7 @@ public class AuthorRepositoryTest {
     @org.junit.Test
     public void findAuthorById() {
         Author author = new Author();
-        author.setAuthor_id(1);
+        //author.setAuthor_id(1);
         author.setFirst_name("John");
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
