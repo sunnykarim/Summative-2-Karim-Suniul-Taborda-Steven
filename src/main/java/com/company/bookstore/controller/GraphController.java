@@ -11,6 +11,8 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import java.util.Optional;
+
 @Controller
 public class GraphController {
 
@@ -24,8 +26,14 @@ public class GraphController {
     AuthorRepository authorRepo;
 
     @QueryMapping
-    public Book findBookById(@Argument int id) {
-        return bookRepo.findById(id).get();
+    public Book findBookById(@Argument int book_id) {
+        Optional<Book> book = bookRepo.findById(book_id);
+        if (book.isPresent()){
+            return book.get();
+        }
+        else {
+            return null;
+        }
     }
 
     @QueryMapping

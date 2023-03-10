@@ -36,7 +36,7 @@ public class AuthorRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -61,7 +61,7 @@ public class AuthorRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -69,15 +69,15 @@ public class AuthorRepositoryTest {
         authorRepo.save(author);
 
         Author author2 = new Author();
-        author.setAuthor_id(2);
-        author.setFirst_name("Jane");
-        author.setLast_name("Doe");
-        author.setStreet("1234 Random Address");
-        author.setCity("Sunnyvale");
-        author.setState("California");
-        author.setPostal_code("94043");
-        author.setPhone("408-123-4567");
-        author.setEmail("JaneDoe@gmail.com");
+        author2.setAuthor_id(2);
+        author2.setFirst_name("Jane");
+        author2.setLast_name("Doe");
+        author2.setStreet("1234 Random Address");
+        author2.setCity("Sunnyvale");
+        author2.setState("CA");
+        author2.setPostal_code("94043");
+        author2.setPhone("408-123-4567");
+        author2.setEmail("JaneDoe@gmail.com");
 
         authorRepo.save(author2);
 
@@ -96,7 +96,7 @@ public class AuthorRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -123,7 +123,7 @@ public class AuthorRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -146,7 +146,7 @@ public class AuthorRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");

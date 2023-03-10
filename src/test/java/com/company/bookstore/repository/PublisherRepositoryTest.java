@@ -35,7 +35,7 @@ public class PublisherRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -59,7 +59,7 @@ public class PublisherRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -67,14 +67,14 @@ public class PublisherRepositoryTest {
         publisherRepo.save(publisher);
 
         Publisher publisher2 = new Publisher();
-        publisher.setPublisher_id(2);
-        publisher.setName("John Doe");
-        publisher.setStreet("1234 Random Address");
-        publisher.setCity("Sunnyvale");
-        publisher.setState("California");
-        publisher.setPostal_code("94043");
-        publisher.setPhone("408-123-4567");
-        publisher.setEmail("JaneDoe@gmail.com");
+        publisher2.setPublisher_id(2);
+        publisher2.setName("John Doe");
+        publisher2.setStreet("1234 Random Address");
+        publisher2.setCity("Sunnyvale");
+        publisher2.setState("CA");
+        publisher2.setPostal_code("94043");
+        publisher2.setPhone("408-123-4567");
+        publisher2.setEmail("JaneDoe@gmail.com");
 
         publisherRepo.save(publisher2);
 
@@ -92,7 +92,7 @@ public class PublisherRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -118,7 +118,7 @@ public class PublisherRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -140,7 +140,7 @@ public class PublisherRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");

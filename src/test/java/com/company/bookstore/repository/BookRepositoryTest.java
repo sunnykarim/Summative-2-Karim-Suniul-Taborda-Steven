@@ -53,7 +53,7 @@ public class BookRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -62,7 +62,7 @@ public class BookRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -99,7 +99,7 @@ public class BookRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -108,7 +108,7 @@ public class BookRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -131,7 +131,7 @@ public class BookRepositoryTest {
         author.setLast_name("BBBB");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -140,7 +140,7 @@ public class BookRepositoryTest {
         publisher.setName("AAA BBBB");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -172,7 +172,7 @@ public class BookRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -181,7 +181,7 @@ public class BookRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -218,7 +218,7 @@ public class BookRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -227,7 +227,7 @@ public class BookRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");
@@ -260,7 +260,7 @@ public class BookRepositoryTest {
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
         author.setCity("Toronto");
-        author.setState("Ohio");
+        author.setState("OH");
         author.setPostal_code("43964");
         author.setPhone("740-123-4567");
         author.setEmail("JohnDoe@gmail.com");
@@ -269,7 +269,7 @@ public class BookRepositoryTest {
         publisher.setName("John Doe");
         publisher.setStreet("42 Wallaby Way, Sydney.");
         publisher.setCity("Toronto");
-        publisher.setState("Ohio");
+        publisher.setState("OH");
         publisher.setPostal_code("43964");
         publisher.setPhone("740-123-4567");
         publisher.setEmail("JohnDoe@gmail.com");

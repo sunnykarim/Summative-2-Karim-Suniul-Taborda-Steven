@@ -11,7 +11,7 @@ type Author {
 }
 
 type Book {
-    id: ID
+    book_id: ID
     isbn: String
     title: String
     author: Author
@@ -21,7 +21,7 @@ type Book {
 }
 
 type Publisher {
-    id: ID
+    publisher_id: ID
     name: String!
     street: String!
     city: String!
