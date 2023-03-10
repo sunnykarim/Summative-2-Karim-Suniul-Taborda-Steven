@@ -24,8 +24,7 @@ public class Publisher {
     private String email;
 
     // publisher join on set of books
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "publisher_id")
+    @OneToMany(mappedBy = "publisher_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<Book>( );
 
     public Publisher() {

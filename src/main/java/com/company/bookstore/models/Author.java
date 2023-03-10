@@ -16,6 +16,7 @@ public class Author implements Serializable {
     @Column(name = "author_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int author_id;
+
     private String first_name;
     private String last_name;
     private String street;
@@ -26,8 +27,7 @@ public class Author implements Serializable {
     private String email;
 
     // one join column, set of books
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "author_id")
+    @OneToMany(mappedBy = "author_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<Book>();
 
     public Author() {

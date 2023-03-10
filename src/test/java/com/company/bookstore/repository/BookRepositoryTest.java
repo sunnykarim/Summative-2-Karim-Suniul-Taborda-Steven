@@ -49,7 +49,6 @@ public class BookRepositoryTest {
         book.setPrice((float) 16.97);
 
         Author author = new Author();
-        author.setAuthor_id(1);
         author.setFirst_name("John");
         author.setLast_name("Doe");
         author.setStreet("42 Wallaby Way, Sydney.");
@@ -72,14 +71,14 @@ public class BookRepositoryTest {
         book.setPublisher_id(publisher.getPublisher_id());
 
         //Act...
-        book = bookRepo.save(book);
         author = authorRepo.save(author);
         publisher = publisherRepo.save(publisher);
+        book = bookRepo.save(book);
 
         //Assert...
-        Optional<Book> book1 = bookRepo.findById(book.getBook_id());
+        Book book1 = bookRepo.findById(book.getBook_id()).get();
 
-        assertEquals(book1.get(), book);
+        assertEquals(book1, book);
     }
 
     @Test
@@ -95,6 +94,30 @@ public class BookRepositoryTest {
         book.setPublisher_id(1);
         book.setPrice((float) 16.97);
 
+        Author author = new Author();
+        author.setFirst_name("John");
+        author.setLast_name("Doe");
+        author.setStreet("42 Wallaby Way, Sydney.");
+        author.setCity("Toronto");
+        author.setState("Ohio");
+        author.setPostal_code("43964");
+        author.setPhone("740-123-4567");
+        author.setEmail("JohnDoe@gmail.com");
+
+        Publisher publisher = new Publisher();
+        publisher.setName("John Doe");
+        publisher.setStreet("42 Wallaby Way, Sydney.");
+        publisher.setCity("Toronto");
+        publisher.setState("Ohio");
+        publisher.setPostal_code("43964");
+        publisher.setPhone("740-123-4567");
+        publisher.setEmail("JohnDoe@gmail.com");
+
+        book.setAuthor_id(author.getAuthor_id());
+        book.setPublisher_id(publisher.getPublisher_id());
+
+        author = authorRepo.save(author);
+        publisher = publisherRepo.save(publisher);
         bookRepo.save(book);
 
         Book book2 = new Book();
@@ -103,6 +126,30 @@ public class BookRepositoryTest {
         book.setTitle("BookTestName2");
         book.setPrice((float) 19.99);
 
+        Author author2 = new Author();
+        author.setFirst_name("AAAAA");
+        author.setLast_name("BBBB");
+        author.setStreet("42 Wallaby Way, Sydney.");
+        author.setCity("Toronto");
+        author.setState("Ohio");
+        author.setPostal_code("43964");
+        author.setPhone("740-123-4567");
+        author.setEmail("JohnDoe@gmail.com");
+
+        Publisher publisher2 = new Publisher();
+        publisher.setName("AAA BBBB");
+        publisher.setStreet("42 Wallaby Way, Sydney.");
+        publisher.setCity("Toronto");
+        publisher.setState("Ohio");
+        publisher.setPostal_code("43964");
+        publisher.setPhone("740-123-4567");
+        publisher.setEmail("JohnDoe@gmail.com");
+
+        book.setAuthor_id(author.getAuthor_id());
+        book.setPublisher_id(publisher.getPublisher_id());
+
+        author2 = authorRepo.save(author);
+        publisher2 = publisherRepo.save(publisher);
         bookRepo.save(book2);
 
         List<Book> bookList = bookRepo.findAll();
@@ -120,6 +167,30 @@ public class BookRepositoryTest {
         book.setTitle("BookTestName1");
         book.setPrice((float) 14.97);
 
+        Author author = new Author();
+        author.setFirst_name("John");
+        author.setLast_name("Doe");
+        author.setStreet("42 Wallaby Way, Sydney.");
+        author.setCity("Toronto");
+        author.setState("Ohio");
+        author.setPostal_code("43964");
+        author.setPhone("740-123-4567");
+        author.setEmail("JohnDoe@gmail.com");
+
+        Publisher publisher = new Publisher();
+        publisher.setName("John Doe");
+        publisher.setStreet("42 Wallaby Way, Sydney.");
+        publisher.setCity("Toronto");
+        publisher.setState("Ohio");
+        publisher.setPostal_code("43964");
+        publisher.setPhone("740-123-4567");
+        publisher.setEmail("JohnDoe@gmail.com");
+
+        book.setAuthor_id(author.getAuthor_id());
+        book.setPublisher_id(publisher.getPublisher_id());
+
+        author = authorRepo.save(author);
+        publisher = publisherRepo.save(publisher);
         bookRepo.save(book);
 
         //Act...
@@ -142,6 +213,30 @@ public class BookRepositoryTest {
         book.setTitle("BookTestName3");
         book.setPrice((float) 16.97);
 
+        Author author = new Author();
+        author.setFirst_name("John");
+        author.setLast_name("Doe");
+        author.setStreet("42 Wallaby Way, Sydney.");
+        author.setCity("Toronto");
+        author.setState("Ohio");
+        author.setPostal_code("43964");
+        author.setPhone("740-123-4567");
+        author.setEmail("JohnDoe@gmail.com");
+
+        Publisher publisher = new Publisher();
+        publisher.setName("John Doe");
+        publisher.setStreet("42 Wallaby Way, Sydney.");
+        publisher.setCity("Toronto");
+        publisher.setState("Ohio");
+        publisher.setPostal_code("43964");
+        publisher.setPhone("740-123-4567");
+        publisher.setEmail("JohnDoe@gmail.com");
+
+        book.setAuthor_id(author.getAuthor_id());
+        book.setPublisher_id(publisher.getPublisher_id());
+
+        author = authorRepo.save(author);
+        publisher = publisherRepo.save(publisher);
         bookRepo.save(book);
 
         //Act...
@@ -158,8 +253,32 @@ public class BookRepositoryTest {
         book.setIsbn("555-1-12-123456-0");
         book.setPublish_date("01/01/1970");
         book.setTitle("BookTestName1");
-        book.setPrice((float) 12.99);
 
+
+        Author author = new Author();
+        author.setFirst_name("John");
+        author.setLast_name("Doe");
+        author.setStreet("42 Wallaby Way, Sydney.");
+        author.setCity("Toronto");
+        author.setState("Ohio");
+        author.setPostal_code("43964");
+        author.setPhone("740-123-4567");
+        author.setEmail("JohnDoe@gmail.com");
+
+        Publisher publisher = new Publisher();
+        publisher.setName("John Doe");
+        publisher.setStreet("42 Wallaby Way, Sydney.");
+        publisher.setCity("Toronto");
+        publisher.setState("Ohio");
+        publisher.setPostal_code("43964");
+        publisher.setPhone("740-123-4567");
+        publisher.setEmail("JohnDoe@gmail.com");
+
+        book.setAuthor_id(author.getAuthor_id());
+        book.setPublisher_id(publisher.getPublisher_id());
+
+        author = authorRepo.save(author);
+        publisher = publisherRepo.save(publisher);
         bookRepo.save(book);
 
         //Assert...
