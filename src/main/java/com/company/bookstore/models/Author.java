@@ -27,7 +27,7 @@ public class Author implements Serializable {
     private String email;
 
     // one join column, set of books
-    @OneToMany(mappedBy = "author_id",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<Book>();
 
     public Author() {

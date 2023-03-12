@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
@@ -72,7 +71,7 @@ public class BookRepositoryTest {
 
         publisher = publisherRepo.save(publisher);
 
-        book.setAuthor_id(author.getAuthor_id());
+        book.setAuthorId(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
         //Act...
@@ -118,7 +117,7 @@ public class BookRepositoryTest {
         publisher.setEmail("JohnDoe@gmail.com");
         publisher = publisherRepo.save(publisher);
 
-        book.setAuthor_id(author.getAuthor_id());
+        book.setAuthorId(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
         book = bookRepo.save(book);
@@ -150,7 +149,7 @@ public class BookRepositoryTest {
         publisher2.setEmail("JohnDoe@gmail.com");
         publisher2 = publisherRepo.save(publisher2);
 
-        book2.setAuthor_id(author2.getAuthor_id());
+        book2.setAuthorId(author2.getAuthor_id());
         book2.setPublisher_id(publisher2.getPublisher_id());
 
         book2 = bookRepo.save(book2);
@@ -193,7 +192,7 @@ public class BookRepositoryTest {
         publisher.setEmail("JohnDoe@gmail.com");
         publisher = publisherRepo.save(publisher);
 
-        book.setAuthor_id(author.getAuthor_id());
+        book.setAuthorId(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
         bookRepo.save(book);
@@ -239,7 +238,7 @@ public class BookRepositoryTest {
         publisher.setEmail("JohnDoe@gmail.com");
         publisher = publisherRepo.save(publisher);
 
-        book.setAuthor_id(author.getAuthor_id());
+        book.setAuthorId(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
         bookRepo.save(book);
@@ -281,7 +280,7 @@ public class BookRepositoryTest {
         publisher.setEmail("JohnDoe@gmail.com");
         publisher = publisherRepo.save(publisher);
 
-        book.setAuthor_id(author.getAuthor_id());
+        book.setAuthorId(author.getAuthor_id());
         book.setPublisher_id(publisher.getPublisher_id());
 
         bookRepo.save(book);
@@ -292,4 +291,43 @@ public class BookRepositoryTest {
         assertEquals(book1.get(), book);
     }
 
+    @org.junit.Test
+    public void findBookByAuthorId() {
+        Book book = new Book();
+        book.setIsbn("5551121234560");
+        book.setPublish_date(LocalDate.parse("1970-01-01"));
+        book.setTitle("BookTestName1");
+
+
+        Author author = new Author();
+        author.setFirst_name("John");
+        author.setLast_name("Doe");
+        author.setStreet("42 Wallaby Way, Sydney.");
+        author.setCity("Toronto");
+        author.setState("OH");
+        author.setPostal_code("43964");
+        author.setPhone("7401234567");
+        author.setEmail("JohnDoe@gmail.com");
+        author = authorRepo.save(author);
+
+        Publisher publisher = new Publisher();
+        publisher.setName("John Doe");
+        publisher.setStreet("42 Wallaby Way, Sydney.");
+        publisher.setCity("Toronto");
+        publisher.setState("OH");
+        publisher.setPostal_code("43964");
+        publisher.setPhone("7401234567");
+        publisher.setEmail("JohnDoe@gmail.com");
+        publisher = publisherRepo.save(publisher);
+
+        book.setAuthorId(author.getAuthor_id());
+        book.setPublisher_id(publisher.getPublisher_id());
+
+        bookRepo.save(book);
+
+        //Assert...
+        List<Book> books = bookRepo.findByAuthorId(book.getAuthorId());
+
+        assertEquals(books.get(0), book);
+    }
 }

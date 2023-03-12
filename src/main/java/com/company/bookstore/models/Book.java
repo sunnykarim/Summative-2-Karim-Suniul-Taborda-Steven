@@ -18,7 +18,7 @@ public class Book {
 
     private LocalDate publish_date;
     @Column(name = "author_id")
-    private int author_id;
+    private int authorId;
     private String title;
     @Column(name = "publisher_id")
     private int publisher_id;
@@ -29,11 +29,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(int book_id, String isbn, LocalDate publish_date, int author_id, String title, int publisher_id, float price) {
+    public Book(int book_id, String isbn, LocalDate publish_date, int authorId, String title, int publisher_id, float price) {
         this.book_id = book_id;
         this.isbn = isbn;
         this.publish_date = publish_date;
-        this.author_id = author_id;
+        this.authorId = authorId;
         this.title = title;
         this.publisher_id = publisher_id;
         this.price = price;
@@ -55,12 +55,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public int getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     public String getTitle() {
@@ -100,11 +100,11 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return book_id == book.book_id && author_id == book.author_id && publisher_id == book.publisher_id && price == book.price && Objects.equals(isbn, book.isbn) && Objects.equals(publish_date, book.publish_date) && Objects.equals(title, book.title);
+        return book_id == book.book_id && authorId == book.authorId && publisher_id == book.publisher_id && price == book.price && Objects.equals(isbn, book.isbn) && Objects.equals(publish_date, book.publish_date) && Objects.equals(title, book.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(book_id, isbn, publish_date, author_id, title, publisher_id, price);
+        return Objects.hash(book_id, isbn, publish_date, authorId, title, publisher_id, price);
     }
 }

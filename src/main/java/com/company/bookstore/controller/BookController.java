@@ -2,7 +2,6 @@ package com.company.bookstore.controller;
 
 
 import com.company.bookstore.models.Book;
-import com.company.bookstore.models.Publisher;
 import com.company.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,5 +53,12 @@ public class BookController {
         } else {
             return null;
         }
+    }
+
+    //    A GET route that returns a list of books by author id. 10 pts
+    @GetMapping("/books/author/{author_id}")
+    public List<Book> getBooksByAuthorId(@PathVariable int author_id) {
+        List<Book> books = (List<Book>) repo.findByAuthorId(author_id);
+        return books;
     }
 }

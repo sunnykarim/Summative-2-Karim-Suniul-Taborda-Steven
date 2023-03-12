@@ -1,6 +1,5 @@
 package com.company.bookstore.controller;
 
-import com.company.bookstore.models.Author;
 import com.company.bookstore.models.Book;
 import com.company.bookstore.repository.BookRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,7 +20,6 @@ import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -55,7 +53,7 @@ public class BookControllerTest {
         book.setBook_id(1);
         book.setIsbn("999-1-11-123456-0");
         book.setPublish_date(LocalDate.parse("1970-01-01"));
-        book.setAuthor_id(1);
+        book.setAuthorId(1);
         book.setTitle("BookTestName1");
         book.setPublisher_id(1);
         book.setPrice((float) 16.97);
@@ -81,7 +79,7 @@ public class BookControllerTest {
         book.setBook_id(2);
         book.setIsbn("000-1-11-123456-0");
         book.setPublish_date(LocalDate.parse("1970-02-01"));
-        book.setAuthor_id(2);
+        book.setAuthorId(2);
         book.setTitle("BookTestName2");
         book.setPublisher_id(3);
         book.setPrice((float) 19.99);
@@ -100,7 +98,7 @@ public class BookControllerTest {
         book.setBook_id(3);
         book.setIsbn("123-1-11-123456-0");
         book.setPublish_date(LocalDate.parse("1970-02-01"));
-        book.setAuthor_id(3);
+        book.setAuthorId(3);
         book.setTitle("BookTestName3");
         book.setPublisher_id(3);
         book.setPrice((float) 20.00);
@@ -123,7 +121,7 @@ public class BookControllerTest {
         Book book = new Book();
         book.setIsbn("000-1-11-123456-0");
         book.setPublish_date(LocalDate.parse("1970-02-01"));
-        book.setAuthor_id(1);
+        book.setAuthorId(1);
         book.setTitle("BookTestName2");
         book.setPublisher_id(1);
         book.setPrice((float) 19.99);
@@ -131,7 +129,7 @@ public class BookControllerTest {
         Book book2 = new Book();
         book2.setIsbn("123-1-44-124456-0");
         book2.setPublish_date(LocalDate.parse("1970-03-01"));
-        book2.setAuthor_id(2);
+        book2.setAuthorId(2);
         book2.setTitle("BookTestName3");
         book2.setPublisher_id(2);
         book2.setPrice((float) 20.00);
@@ -139,7 +137,7 @@ public class BookControllerTest {
         Book book3 = new Book();
         book3.setIsbn("123-1-44-124434-0");
         book3.setPublish_date(LocalDate.parse("1970-05-01"));
-        book3.setAuthor_id(3);
+        book3.setAuthorId(3);
         book3.setTitle("BookTestName3");
         book3.setPublisher_id(3);
         book3.setPrice((float) 20.00);
@@ -165,4 +163,21 @@ public class BookControllerTest {
                 .andExpect(status().isNoContent());
     }
 
+    // Testing GET /books/author/{author_id}
+    @Test
+    public void shouldReturnBookByAuthorId() throws Exception {
+
+        Book book = new Book();
+        book.setBook_id(2);
+        book.setIsbn("000-1-11-123456-0");
+        book.setPublish_date(LocalDate.parse("1970-02-01"));
+        book.setAuthorId(2);
+        book.setTitle("BookTestName2");
+        book.setPublisher_id(3);
+        book.setPrice((float) 19.99);
+
+        String inputJson = mapper.writeValueAsString(book);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/books/author/2")).andDo(print()).andExpect(status().isOk());
+    }
 }
